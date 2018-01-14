@@ -1,0 +1,54 @@
+package javaInterface;
+
+public interface IMessage {
+	public default void fun() {
+		System.out.println("I Miss You Miss Mystery !");
+	}
+	public static IMessage getInstance() {
+		return new MessageImpl() ;
+	}
+	public void print() ;
+}
+
+package javaInterface;
+
+public class JavaExe {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		IMessage msg = IMessage.getInstance() ;
+		msg.print() ;
+		msg.fun();
+		IMessage msg1 = new IMessage() {
+			public void print() {
+				System.out.println("Hello World !");
+			}
+		} ;
+		msg1.print();
+		IMessage msg2 = () -> System.out.println("A Secret Makes Woman Woman.");
+		msg2.print();
+		IMath re = (p1,p2) -> {
+			System.out.println("I love you miss Mystery!");
+			return p1 + p2 ;
+		} ;
+		System.out.println(re.add(3,4));
+	}
+
+}
+
+package javaInterface;
+
+public class MessageImpl implements IMessage {
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		System.out.println("I Love You Miss Mystery !");
+	}
+}
+
+package javaInterface;
+
+public interface IMath {
+	public int add(int x, int y) ;
+}
