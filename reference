@@ -1,0 +1,34 @@
+package javaRefer;
+import java.util.function.IntFunction ;
+public class JavaRefer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		IUtil<Person,String,Integer> iu = Person :: new ;
+		System.out.println(iu.create("����", 11));
+		IntFunction<String> fun = String :: valueOf ;
+		System.out.println(fun.apply(1000));
+	}
+
+}
+
+package javaRefer;
+
+public class Person {
+	private String name ;
+	private int age ;
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
+}
+
+package javaRefer;
+interface IUtil<R,FP,SP> {
+	public R create(FP p1, SP p2) ;
+}
