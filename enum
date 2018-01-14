@@ -1,0 +1,100 @@
+package javaEnum;
+
+public class ExeEnum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(Color.BLUE);
+		Color [] array = Color.values() ;
+		for(Color temp : array) {
+			System.out.println(temp.ordinal() + ": " + temp.toString());
+		}
+		IColor ic = Color.BLUE ;
+		System.out.println(ic.getColor());
+		System.out.println("********************");
+		Person per = new Person("����",18,Sex.MALE) ;
+		System.out.println(per);
+		System.out.println("************");
+		switch(Sex.FEMALE) {
+		case MALE : 
+			System.out.println("������");
+			break ;
+		case FEMALE :
+			System.out.println("��Ů��");
+			break ;
+		}
+	}
+}
+
+package javaEnum;
+
+public interface IColor {
+	public String getColor() ;
+}
+
+package javaEnum;
+
+public class Person {
+	private String name ;
+	private int age ;
+	private Sex sex ;
+	
+	public Person(String name, int age, Sex sex) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public Sex getSex() {
+		return sex;
+	}
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + ", sex=" + sex + "]";
+	}
+	
+}
+
+package javaEnum;
+
+enum Sex {
+	MALE("��"),FEMALE("Ů") ;
+	private String title ;
+	private Sex(String title) {
+		this.title = title ;
+	}
+	public String toString() {
+		return this.title ;
+	}
+}
+
+package javaEnum;
+
+enum Color implements IColor {
+	RED("��ɫ"),BLUE("��ɫ"),GREEN("��ɫ") ;
+	private String title ;
+	private Color(String title) {
+		this.title = title ;
+	}
+	public String toString() {
+		return this.title ;
+	}
+	public String getColor() {
+		return this.title ;
+	}
+}
